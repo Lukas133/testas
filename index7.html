@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <figure class="image">
+                <img src="" alt="Face" />
+            </figure>
+        </div>
+        <div>
+            <div>
+                <p id="name"></p>
+                <p id="age"></p>
+            </div>
+        </div>
+        <div id="email"></div>
+    </div>
+
+    <script>
+    const name = document.getElementById('name');
+    const age = document.getElementById('age');
+    const email= document.getElementById('email');
+    const img = document.querySelector('img')
+        fetch('https://randomuser.me/api/')
+        .then((response)=> response.json())
+        .then((data)=> data.results[0])
+        .then((person)=> {
+            console.log(person);
+            name.textContent= person.name.first+ ' '+person.name.last;
+            age.textContent= person.age;
+            email.textContent = person.email;
+            img.setAttribute('src', person.picture.large);
+        });
+    </script>
+    
+</body>
+</html>

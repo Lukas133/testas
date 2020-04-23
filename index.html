@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+<script>
+
+let arr=[
+	'Petras yra destytojas',
+	'Petras mano draugas',
+	'jonas saunuolis',
+	'mama, kur dingo Petras?'
+];
+localStorage.setItem('products', JSON.stringify(arr));
+
+const localstorageAdd = (str)=>{
+	const arr=JSON.parse(localStorage.getItem('products'));
+	arr.unshift(str);
+	localStorage.setItem('products', JSON.stringify(arr));
+};
+
+localstorageAdd('Mano vardas Petras');
+
+const filtras = (str) => {
+	let products = JSON.parse(localStorage.getItem('products'));
+	products = products.filter((item)=>item.toLowerCase().includes(str.toLowerCase()))
+	return products;
+};
+
+console.log(filtras('Petras'));
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<form action="" name="loterija">
+		<input type="text" name="vardas"placeholder="vardas">
+		<input type="number" name="amzius"placeholder="metai">
+		<input id="check" name="check"type="checkbox">Ar sutinkate?</input>
+		<button type="submit">submit</button>
+	</form>
+	<script>
+		document.forms.loterija.addEventListener("submit", (event) =>{
+			event.preventDefault();
+
+			const vardas= event.target.elements.vardas.value;
+			const metai=event.target.elements.amzius.value;
+			const check = document.getElementById('check');
+
+		
+			if(check.checked === true && metai>=18){
+				alert('prisiregistravote');
+			}else if(check.checked === false){
+				alert('agree to the rules!!!!!!')
+			}else{
+				alert('You are not adult');
+			}
+		});
+	</script>
+</body>
+</html>
